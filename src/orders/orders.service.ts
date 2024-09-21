@@ -89,10 +89,21 @@ export class OrdersService {
       }),
     );
 
-    const finalAmount = allProducts.reduce(
-      (acc, item) => acc + item.totalPrice,
-      0,
-    );
+    //Adds 25 rupees if order is cash on delivery
+
+    let finalAmount =0;
+
+    if(orderObject.PaymentMethod == "cashOnDelivery"){
+     finalAmount = allProducts.reduce(
+        (acc, product) => acc + product.totalPrice + 25 ,
+        0,
+      );
+    }else{
+      finalAmount = allProducts.reduce(
+        (acc, product) => acc + product.totalPrice,
+        0,
+      );
+    }
     const taxPercentage = process.env.TAX_PERCENTAGE
     const shipmentCharges = process.env.SHIPMENT_CHARGES
     const noOfproducts = process.env.NO_OF_PRODUCTS
