@@ -24,4 +24,6 @@ export class CustomerOrders {
     @Column({default:"failed", nullable:true})
     paymentStatus:string;
 
+    @Column({default:"placed", nullable:true})
+    orderStatus:string;
 }

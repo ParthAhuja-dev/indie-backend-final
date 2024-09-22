@@ -40,7 +40,7 @@ export class Product {
   @Column({ default: 'www.google.com' })
   video2: string;
 
-  @Column('json')
+  @Column('simple-array')
   imageUrl: string[];
 
   @Column()
